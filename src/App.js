@@ -1,5 +1,5 @@
-import CostItem from "./components/CostItem";
-import CostsList from "./components/CostsList";
+import CostsList from "./components/Costs/CostsList";
+import NewCost from "./components/NewCost/NewCost";
 
 function App() {
 
@@ -11,19 +11,20 @@ function App() {
     },
     {
       date: new Date(2021, 2 , 12),
-      description: "chear",
+      description: "Chear",
       amount: 9
     },
     {
       date: new Date(2023, 3 , 13),
-      description: "table",
+      description: "Table",
       amount: 55
-    },
+    }
   ];
 
   return (
     <div className="App">
       <h1>Expense tracker App</h1>
+      <NewCost />
       <CostsList costs={costs} />
     </div>
   );

@@ -8,7 +8,12 @@ const CostsList = ({ costs }) => {
         const { date, description, amount } = el;
 
         return (
-            <CostItem date={date} description={description} amount={amount}></CostItem>
+            <CostItem 
+                date={date} 
+                description={description} 
+                amount={amount}
+                key={amount}
+                ></CostItem>
         )
     })
 
