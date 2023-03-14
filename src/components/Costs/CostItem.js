@@ -9,7 +9,6 @@ const CostItem = ({ date, description, amount }) => {
                 <h2>{description}</h2>
                 <div className='cost-item__price'>${amount}</div>
             </div>
-            <button onDoubleClick={() => console.log('Double click')}>Change description</button>
         </div>
     )
 }
