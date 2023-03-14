@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import CostForm from './CostForm';
 
 import './newCost.scss';
 
 const NewCost = ({ onCostHandler }) => {
+
+    const [ viewForm, setViewForm ] = useState(false)
 
     const saveCostDataHandler = (inputCostData) => {
 
@@ -14,10 +17,19 @@ const NewCost = ({ onCostHandler }) => {
         onCostHandler(costData)
     }
 
+    const viewFormHandler = () => setViewForm(false);
+
     return (
         <div className='new-cost'>
-            <CostForm 
-                onSaveCostData={saveCostDataHandler} />
+            {
+                viewForm ?
+                <CostForm 
+                onSaveCostData={saveCostDataHandler}
+                onViewForm={viewFormHandler} /> :
+                <button onClick={() => setViewForm(true)}>Add new expense</button>
+            }
+            
+            
         </div>
     )
 }

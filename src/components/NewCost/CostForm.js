@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './costForm.scss';
 
-const CostForm = ({ onSaveCostData }) => {
+const CostForm = ({ onSaveCostData, onViewForm}) => {
 
     const [ label, setLabel ] = useState('');
     const [ amount, setAmount ] = useState('');
@@ -16,12 +16,12 @@ const CostForm = ({ onSaveCostData }) => {
             data: new Date(data)
         }
 
-        // console.log(costData)
         onSaveCostData(costData)
 
         setLabel('');
         setAmount('');
         setData('');
+        onViewForm(false)
     }
 
     return (
@@ -30,6 +30,7 @@ const CostForm = ({ onSaveCostData }) => {
                 <div className='new-cost__control'>
                     <label>Label</label>
                     <input 
+                        required
                         type='text' 
                         onChange={e => setLabel(e.target.value)}
                         value={label} />
@@ -38,6 +39,7 @@ const CostForm = ({ onSaveCostData }) => {
                 <div className='new-cost__control'>
                     <label>Amount</label>
                     <input 
+                        required
                         type='number'
                         onChange={e => setAmount(e.target.value)}
                         value={amount} />
@@ -46,6 +48,7 @@ const CostForm = ({ onSaveCostData }) => {
                 <div className='new-cost__control'>
                     <label>Data</label>
                     <input 
+                        required
                         type='date'
                         onChange={e => setData(e.target.value)}
                         value={data} />
@@ -56,7 +59,7 @@ const CostForm = ({ onSaveCostData }) => {
                 </div>
 
                 <div className='new-cost__actions'>
-                    <button>Cancel</button>
+                    <button onClick={() => onViewForm(false)}>Cancel</button>
                 </div>
             </div>
         </form>

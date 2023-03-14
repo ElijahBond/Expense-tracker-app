@@ -7,23 +7,24 @@ import './costsList.scss'
 
 const CostsList = ({ costs }) => {
 
-    const [ year, setYear ] = useState('2022');
+    const [ year, setYear ] = useState('2021');
 
-    const costsListView = costs.map(el => {
-        const { date, description, amount } = el;
+    const costsListView = costs
+        .filter(el => el.date.getFullYear().toString() === year)
+        .map(el => {
+            const { date, description, amount } = el;
 
-        return (
-            <CostItem 
-                date={date} 
-                description={description} 
-                amount={amount}
-                key={amount}>
-            </CostItem>
-        )
+            return (
+                <CostItem 
+                    date={date} 
+                    description={description} 
+                    amount={amount}
+                    key={amount}>
+                </CostItem>
+            )
     })
 
     const yearFilterHandler = (year) => {
-        console.log(year)
         setYear(year)
     };
 
@@ -32,7 +33,11 @@ const CostsList = ({ costs }) => {
             <CostFilter 
                 onChooseYear={yearFilterHandler}
                 year={year} />
-            {costsListView}
+            {
+                costsListView.length === 0 ?
+                <h3 className="empty">No expense in this year</h3> : 
+                costsListView
+            }
         </div>
     )
 }

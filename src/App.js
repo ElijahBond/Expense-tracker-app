@@ -10,7 +10,7 @@ let INITIAL_COSTS = [
   },
   {
     date: new Date(2021, 2 , 12),
-    description: "Chear",
+    description: "Chair",
     amount: 9
   },
   {
